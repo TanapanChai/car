@@ -1,10 +1,14 @@
 package com.example.car.toyota;
 
 
+import com.example.car.CarEntity;
+import com.example.car.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+
 
 @RestController
 @RequestMapping("/camry")
@@ -12,6 +16,9 @@ public class CamryController {
 
     @Autowired
     CamryService service;
+
+    @Autowired
+    CarRepository carRepository;
 
     @RequestMapping(value = "/run", method = {RequestMethod.GET})
     public String run() {
@@ -21,6 +28,11 @@ public class CamryController {
     @RequestMapping(value = "/left", method = {RequestMethod.GET})
     public String turnLeft() {
         return service.turnLeft();
+    }
+
+    @RequestMapping(value = "/", method = {RequestMethod.GET})
+    public Iterable<CarEntity> getAll() {
+        return carRepository.findAll();
     }
 
 
