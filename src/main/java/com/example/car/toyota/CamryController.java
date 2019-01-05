@@ -4,6 +4,7 @@ package com.example.car.toyota;
 import com.example.car.CarEntity;
 import com.example.car.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,6 +34,11 @@ public class CamryController {
     @RequestMapping(value = "/", method = {RequestMethod.GET})
     public Iterable<CarEntity> getAll() {
         return carRepository.findAll();
+    }
+
+    @RequestMapping(value = "/add", method = {RequestMethod.POST})
+    public CarEntity add(@RequestBody CarEntity entity) {
+        return carRepository.save(entity);
     }
 
 

@@ -1,4 +1,4 @@
 package com.example.car;
 
-public class CarServiceImpl {
+public class CarServiceImpl implements CarService {
 }
